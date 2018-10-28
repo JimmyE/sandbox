@@ -35,7 +35,7 @@ class Square extends React.Component {
     }
 
     handleClick = (event, index) => {
-        console.log('add row', event);
+        console.log('add row', index);
         const newRow = {
           title: 'Another row ' + index,
           score: 99,
@@ -51,17 +51,22 @@ class Square extends React.Component {
       console.log('render() starting');
       return (
         <span>
+          <div>
+            <button onClick={(e) => { this.handleClick(e, 999) }} >
+              {this.state.counter}
+            </button>
+          </div>
           {this.state.acctList.map((item, i) => {
             return( 
-            <div key={i} className="inputRow" >
+            <div key={i} className="inputRow animateRow" >
                <span className='item field1'>{item.title}</span>
                <span className='item field2'> test 123</span>
                <span className='item btn'>
-                 <button onClick={this.handleClick}> add </button>
+                  <button onClick={(e) => { this.handleClick(e, i) }} >
+                    add row
+                     {this.state.counter}
+                  </button>
                 </span>
-                <button onClick={(e) => { this.clickMe(e, i) }} >
-                   {this.state.counter}
-                </button>
             </div>
               )
           } )}

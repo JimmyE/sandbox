@@ -15,3 +15,29 @@ body {
       width: 170px;
       border: 1px solid lightgray;
   }
+
+  .animateRow {
+    animation-duration: 750ms;
+    animation-name: slidein;
+    -webkit-animation-name: slidein;
+    position: relative;
+  }
+
+  @keyframes slidein {
+    from {
+      top: -30px;
+    }
+  
+    to {
+      top: 0px;
+    }
+  }
+  @-webkit-keyframes slidein {
+    from {
+          top:-30px;
+    }
+    
+    to {
+          top:0px;
+    }
+  }
