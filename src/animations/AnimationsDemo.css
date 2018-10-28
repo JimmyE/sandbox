@@ -1,0 +1,14 @@
+body {
+    font: 14px "Century Gothic", Futura, sans-serif;
+    margin: 20px;
+  }
+  
+  .inputRow {
+      border: 1px solid darkgray;
+      display: flex;
+      flex-direction: row;
+      padding: 5px;
+  }
+  .item {
+      flex-grow: 1;
+  }

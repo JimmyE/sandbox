@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flex Demo</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background: black;
+            border: 3px solid orange;
+            border-radius: 3px;
+            margin: 20px;
+        }
+        .item {
+            flex-grow: 1;
+            /* flex-shrink: 1; */
+            width: 100px;
+            height: 40px;
+            border: 1px solid darkslategrey;
+            background-color: turquoise;
+            border-radius: 3px;
+            padding: 10px;
+        }
+        .flex-justify.flex-center  {
+            justify-content: center;
+        }
+        .flex-justify.flex-space  {
+            justify-content: space-between;
+        }
+        .flex-justify.flex-space-even  {
+            /* justify-content: space-around; */
+            justify-content: space-evenly;
+        }
+
+        .flex-justify .item {
+            flex: 0 0 10em;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 
+        https://github.com/stmcallister/flexbox-grid-demos
+    -->
+
+    <!-- 
+        flex-direction: row, column, row-reverse, column-reverse
+
+        flex-wrap:wrap, wrap-reverse, nowrap (set item width so that they wrap) 
+        flex-flow: shorthand for flex-direction and flex-wrap
+
+        flex-grow: how much an item will grow in relation to other items
+        flex-shrink: how much an item will shrink in relation to other items
+        flex-basis: initial size of an item
+        flex: <grow> <shrink> <basis>
+
+        justify-content: flex-start, flex-end, center, 
+                        space-around, space-between
+            ==> defines the alignment along the main axis of container
+        align-items: stretch, flex-start, flex-end, center, baseline, 
+            ==> defines alignment along the cross axis of container
+        horizontal + vertical centering: container { justify-content: center; align-items: center; }
+        
+     -->
+    <h2>Flexbox with 'grow 2'</h2>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item" style="flex-grow: 2;">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>  
+
+    <h2>Flexbox with 'justify-content: center'</h2>
+    <div class="container flex-justify flex-center">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>  
+
+    <h2>Flexbox with 'justify-content: space-around'</h2>
+    <div class="container flex-justify flex-space">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>  
+    
+    <h2>Flexbox with 'justify-content: space-even'</h2>
+    <div class="container flex-justify flex-space-even">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>  
+
+</body>
+</html>
