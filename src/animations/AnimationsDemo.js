@@ -1,37 +1,26 @@
 import React from 'react';
 import './AnimationsDemo.css';
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+
 
 /*
-class Square extends React.Component {
+class AccountRow extends React.Component {
     render() {
       return (
-        <button className="square">
-        </button>
       );
     }
   }
- */
+  */
 
- class FooWorld {
-   id: 0;
-   title = '';
-   score = 0;
- }
-  
   class AnimationsDemo extends React.Component {
     constructor(props) {
         super(props); 
-        /*
-        const row1 = FooWorld();
-        row1.title = 'Foo World 123';
-        row1.score = 88;
-        row1.id = 999;
-        */
         this.state = { 
           counter: 0,
           acctList: [{title: 'foo world A', score: 88, id: 999}]
          }
-        //this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick = (event, index) => {
@@ -47,6 +36,20 @@ class Square extends React.Component {
         }));
     };
 
+    handleClickDelete = (event, index) => {
+        console.log('delete row', index);
+
+        // remove the last item, don't care what row
+        const newList = this.state.acctList.po
+        //this.setState((prevState) => ({
+           //acctList: [...prevState.acctList.splice(-1, 1)]
+        //}));
+
+        this.setState({
+          acctList: this.state.acctList.filter((_, i) => i !== index)
+        });
+    };
+
     render() {
       console.log('render() starting');
       return (
@@ -56,20 +59,31 @@ class Square extends React.Component {
               {this.state.counter}
             </button>
           </div>
-          {this.state.acctList.map((item, i) => {
-            return( 
-            <div key={i} className="inputRow animateRow" >
-               <span className='item field1'>{item.title}</span>
-               <span className='item field2'> test 123</span>
-               <span className='item btn'>
-                  <button onClick={(e) => { this.handleClick(e, i) }} >
-                    add row
-                     {this.state.counter}
-                  </button>
-                </span>
-            </div>
-              )
-          } )}
+          <div>
+          <TransitionGroup className="todo-list">
+              {this.state.acctList.map((item, i) => {
+                return( 
+               <CSSTransition key={i} classNames="move" timeout={900} active="true">
+                <div key={i} className="inputRow old_animateRow" >
+                   <span className='item field1'>{item.title}</span>
+                   <span className='item field2'> test 123</span>
+                   <span className='item btn'>
+                      <button onClick={(e) => { this.handleClick(e, i) }} >
+                        add row
+                         {this.state.counter}
+                      </button>
+                    </span>
+                   <span className='item btn'>
+                      <button onClick={(e) => { this.handleClickDelete(e, i) }} >
+                        delete
+                      </button>
+                    </span>
+                </div>
+                </ CSSTransition>
+                  )
+              } )}
+          </TransitionGroup >
+          </div>
         </span>
         );
     }
